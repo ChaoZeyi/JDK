@@ -13,7 +13,7 @@ public interface Collection<E> extends Iterable<E>{
        * 返回集合中元素的个数，也就是常说的集合大小     
        */
        int size();
-       
+
        /**
         * Returns <tt>true</tt> if this collection contains no elements.
         *
@@ -29,7 +29,7 @@ public interface Collection<E> extends Iterable<E>{
         * 判断该集合是否包含指定的元素，如何包含，则返回true
         */
        boolean contains(Object o);
-       
+
        /**
         * Returns an iterator over the elements in this collection.  There are no
         * guarantees concerning the order in which the elements are returned
@@ -37,8 +37,11 @@ public interface Collection<E> extends Iterable<E>{
         * guarantee).
         *
         * @return an <tt>Iterator</tt> over the elements in this collection
-     */
-    Iterator<E> iterator();｝
+        * 继承的是Iterable接口的iterator方法，返回该集合的一个迭代器，在遍历时，使用的是Iterator接口的next方法
+        */
+        Iterator<E> iterator();
+        
+｝
 ```
 
 
