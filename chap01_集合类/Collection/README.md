@@ -38,11 +38,46 @@ public interface Collection<E> extends Iterable<E>{
         *
         * @return an <tt>Iterator</tt> over the elements in this collection
         * 继承的是Iterable接口的iterator方法，返回该集合的一个迭代器，在遍历时，使用的是Iterator接口的next方法
+        * 对于有序的集合，比如list，则遍历顺序和数据新增顺序一致；对于set等无序集合，遍历顺序和实现Comparable接口的顺序一致，按大小顺序
         */
         Iterator<E> iterator();
-        
+        /**     
+         * Returns an array containing all of the elements in this collection.     
+         * If this collection makes any guarantees as to what order its elements     
+         * are returned by its iterator, this method must return the elements in     
+         * the same order.     
+         *     
+         *     
+         * @return an array containing all of the elements in this collection
+         * 以数组的形式返回集合中的所有元素，数组中元素的顺序与遍历的顺序一致。     
+         */    
+         Object[] toArray();
+         /**     
+         * Returns an array containing all of the elements in this collection.     
+         * If this collection makes any guarantees as to what order its elements     
+         * are returned by its iterator, this method must return the elements in     
+         * the same order.     
+         *     
+         *     
+         * @return an array containing all of the elements in this collection
+         * 功能和上面的toArray()方法一致，以数组的形式返回集合中的所有元素，数组中元素的顺序与遍历的顺序一致。
+         * 区别在于，上面的toArray()方法返回的是Object[]，当需要强制转换成Integer[]时，会     
+         */
+         <T> T[] toArray(T[] a);
 ｝
 ```
+
+### 注意点：
+
+1. Object\[\] toArray\(\);与&lt;T&gt; T\[\] toArray\(T\[\] a\);    两者功能相同，区别在于：前者返回的是Object\[\]，当需要强制转换成Integer\[\]时，会 
+
+   ```java
+
+   ```
+
+   ```java
+
+   ```
 
 
 
