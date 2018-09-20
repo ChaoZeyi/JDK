@@ -37,8 +37,10 @@ public interface Collection<E> extends Iterable<E>{
         * guarantee).
         *
         * @return an <tt>Iterator</tt> over the elements in this collection
-        * 继承的是Iterable接口的iterator方法，返回该集合的一个迭代器，在遍历时，使用的是Iterator接口的next方法
-        * 对于有序的集合，比如list，则遍历顺序和数据新增顺序一致；对于set等无序集合，遍历顺序和实现Comparable接口的顺序一致，按大小顺序
+        * 继承的是Iterable接口的iterator方法，返回该集合的一个迭代器，在遍历时，使用的是Iterator接口
+        * 的next方法
+        * 对于有序的集合，比如list，则遍历顺序和数据新增顺序一致；对于set等无序集合，遍历顺序和实现
+        * Comparable接口的顺序一致，按大小顺序
         */
         Iterator<E> iterator();
   
@@ -59,7 +61,8 @@ public interface Collection<E> extends Iterable<E>{
           * are returned by its iterator, this method must return the elements in
           * the same order.
           * @return an array containing all of the elements in this collection
-          * 功能和上面的toArray()方法一致，以数组的形式返回集合中的所有元素，数组中元素的顺序与遍历的顺序一致。
+          * 功能和上面的toArray()方法一致，以数组的形式返回集合中的所有元素，数组中元素的顺序与遍历的顺
+          * 序一致。
           * 不同点可参见下面的注意点第一条
          */
          <T> T[] toArray(T[] a);
@@ -96,7 +99,8 @@ public interface Collection<E> extends Iterable<E>{
          * @param  c collection to be checked for containment in this collection
          * @return <tt>true</tt> if this collection contains all of the elements
          *         in the specified collection
-         * 判断该集合是否包含指定集合的所有元素，如果包含则返回true，强调的是元素间的包含关系，可以是一个set包含一个list
+         * 判断该集合是否包含指定集合的所有元素，如果包含则返回true，强调的是元素间的包含关系，可以是一个
+         * set包含一个list
          */
         boolean containsAll(Collection<?> c);
 
@@ -221,7 +225,9 @@ public interface Collection<E> extends Iterable<E>{
          * @return a possibly parallel {@code Stream} over the elements in this
          * collection
          * @since 1.8
-         * 相比于上面的stream()方法，该方法返回的是一个并行流，使用fork/join并行方式来拆分任务和加速处理过程，相当于是将大任务拆分成多个互不依赖的子任务队列，每个任务队列都由一个线程来执行，这样就存在线程安全的问题，需要特别注意
+         * 相比于上面的stream()方法，该方法返回的是一个并行流，使用fork/join并行方式来拆分任务和加速处
+         * 理过程，相当于是将大任务拆分成多个互不依赖的子任务队列，每个任务队列都由一个线程来执行，这样就
+         * 存在线程安全的问题，需要特别注意
          */
         default Stream<E> parallelStream() {
             return StreamSupport.stream(spliterator(), true);
@@ -232,12 +238,7 @@ public interface Collection<E> extends Iterable<E>{
 ### 注意点：
 
 1. Object\[\] toArray\(\);与&lt;T&gt; T\[\] toArray\(T\[\] a\);    两者功能相同，区别在于：前者返回的是Object\[\]，当需要强制转换成Integer\[\]时，会报错：`Exception in thread "main" java.lang.ClassCastException: [Ljava.lang.Object; cannot be cast to [Ljava.lang.Integer;`在这种情况下，就可以使用后面的方法： `Integer[] y = x.toArray(new Integer[1]);`
-
 2. java8下新增了几个和lambda表达式以及stream相关的default方法，需要特别注意。
-
-   ​
-
-   ​
 
 
 
